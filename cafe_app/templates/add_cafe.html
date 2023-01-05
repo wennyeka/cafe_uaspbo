@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+
+<div class="container" style="padding-left: 150px; padding-right: 150px;">
+
+    <script>
+        {{ pesan }}
+    </script>
+
+    <form action="/add_cafe/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Save" class="btn" style="background-color: #CC9999; color: white;">
+        <a href="/beranda" class="btn" style="background-color: #8D6649; color: white;">Back</a>
+
+    </form>
+
+</div>
+<br>
+
+{% endblock %}

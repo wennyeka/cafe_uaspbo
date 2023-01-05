@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        
+        <!-- Carousel -->
+        <div class="grid tm-carousel">
+            <figure class="effect-honey">
+                <img src="/static/Jannor Coffee & Co.PNG" alt="Featured Item">
+                <figcaption>
+                    <h4><i><span>Jannor</span> Coffee & Co</i></h4>
+                </figcaption>
+            </figure>
+            <figure class="effect-honey">
+                <img src="/static/Zhieva Coffee.jpg" alt="Featured Item">
+                <figcaption>
+                    <h4><i><span>Zhieva</span> Coffee</i></h4>
+                </figcaption>
+            </figure>
+            <figure class="effect-honey">
+                <img src="/static/Aii Catur.jpg" alt="Featured Item">
+                <figcaption>
+                    <h4><i><span>Aii</span> Catur</i></h4>
+                </figcaption>
+            </figure>
+            <figure class="effect-honey">
+                <img src="/static/Satu Tempat caffe & Eatery.JPG" alt="Featured Item">
+                <figcaption>
+                    <h4><i><span>Satu Tempat</span> caffe & Eatery</i></h4>
+                </figcaption>
+            </figure>
+            <figure class="effect-honey">
+                <img src="/static/Toko Kopi Kulacino.PNG" alt="Featured Item">
+                <figcaption>
+                    <h4><i><span>Toko Kopi</span> Kulacino</i></h4>
+                </figcaption>
+            </figure>
+        </div>
+
+        
+        <!-- Main -->
+        <main>
+            <!-- Welcome section -->
+            <section class="tm-welcome">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="tm-section-header tm-header-floating" id="judul"><span style="font-family: Brush Script MT;"><b>Hello!</b></span> <i style="font-size: 20px;"> <b>{{user}},</b> welcome to mysite</i></h2>         
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 150px;">
+                    <div class="col">
+                        <div id="map"></div>
+                    </div>
+                </div>
+
+                <table class="table" style="margin-top: 50px;">
+                    <thead class="text-center">
+                      <tr>
+                        <th scope="col">Cafe</th>
+                        <th scope="col">Titik Koordinat</th>
+                        <th scope="col"><a href="/add"><img src="/static/add.png" alt="" width="30px"></a> Add</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        {% for koordinat in koordinats %}
+                        <tr>
+                            <td>{{ koordinat.nama_cafe }}</td>
+                            <td>{{ koordinat.koordinat }}</td>
+                            <td>
+                              <a href="{% url 'update' koordinat.id %}" class="btn btn-sm" style="background-color: #CC9999; color: white;">Update</a>
+                              <a href="{% url 'delete' koordinat.id %}" class="btn btn-sm" style="background-color: #8D6649; color: white;">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="row tm-welcome-row">
+                    <div class="col-12" style="margin-bottom: 50px;">
+                        <h2 id="cafe" class="tm-section-header tm-se ction-header-small"><a href="/add_cafe/" style="color: white;">--- Cafe Shop ---</a></h2>        
+                    </div>
+                    {% for cafe in cafes %}
+                    <article class="col-lg-6 tm-media">
+                        <img src="{% static cafe.img %}" alt="Welcome image" class="img-fluid tm-media-img" />
+                        <div class="tm-media-body">
+                            <a href="#" class="tm-article-link"><h3 class="tm-article-title text-uppercase"><b>{{ cafe.nama_cafe }}</b></h3></a>
+                            <p style="font-size: 10px;">{{ cafe.alamat }}</p>
+                            <p style="font-size: 10px;"><b>No.tlp : {{ cafe.no_tlp }}</b></p>
+                            <br>
+                                <a href="{% url 'update_cafe' cafe.id %}"><img src="/static/update.png" alt="" width="30px"></a>
+                                <a href="{% url 'delete_cafe' cafe.id %}"><img src="/static/delete.png" alt="" width="30px"></a>
+                            <br>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+
+            </section>
+            
+            <footer>
+                <img src="/static/pembatas.png" alt="" width="100%"> <br><br>
+  
+                <!-- Section: Social media -->
+                <section class="mb-4">
+  
+                  <!-- Twitter -->
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://twitter.com/itszmee_"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+  
+                  <!-- Instagram -->
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://instagram.com/wennyeka.m"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+  
+                  <!-- WhatsApp -->
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://wa.me/6287788083030"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-whatsapp"></i
+                  ></a>
+
+                  <!-- Pinterest -->
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://pinterest.com/wennyekaa_"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-pinterest"></i
+                  ></a>
+
+                </section>
+                <!-- Section: Social media -->
+  
+                <div id="contact" class="row tm-welcome-row-2">
+                  <div class="col-lg-4">
+                    <article class="tm">
+                        <h3 class="tm-article-title">--- About ---</h3>
+                        <p class="tm-article-text">This website was created to fulfill the final semester exam for Object Oriented Programming courses, where this website contains information in the form of cafes in Serang.</p>
+                    </article>    
+                  </div>
+                  <div class="col-lg-3">
+                      <article class="tm">
+                          <h3 class="tm-article-title">--- Contact Me ---</h3>
+                          <p class="tm-article-text">
+                            Serang, Banten 42117 <i class="fas fa-home me-3 text-secondary"></i> <br>
+                            wennyekam10503@gmail.com <i class="fas fa-envelope me-3 text-secondary"></i> <br>
+                            087788083030 <i class="fas fa-phone me-3 text-secondary"></i>
+                          </p>
+                      </article>
+                  </div>
+                  <div class="col-lg-5">
+                    <article class="tm">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2805.1291914878775!2d106.15547610875504!3d-6.123738484741925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e418ad2d8081d9f%3A0xc2d9cc06bde03f1a!2zNsKwMDcnMjQuMSJTIDEwNsKwMDknMjYuMyJF!5e0!3m2!1sid!2sid!4v1672825298824!5m2!1sid!2sid" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </article>    
+                  </div>
+              </div>
+              </footer>
+            
+        </main>
+    </div>
+
+{% endblock %}

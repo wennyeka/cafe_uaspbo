@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+
+<div class="container" style="padding-left: 150px; padding-right: 150px;">
+
+    <script>
+        {{ pesan }}
+    </script>
+
+    <form action="{% url 'update' koordinat.id %}" method="post">
+        {% csrf_token %}
+
+        <br><br>
+        <h2 style="color: #8D6649;; font-family: Perpetua;">--- Update ---</h2>
+        <br>
+
+        {{ form.as_p }}
+
+        <br>
+
+        <input type="submit" value="Save" class="btn" style="background-color: #CC9999; color: white;">
+        <a href="/beranda/" class="btn" style="background-color: #8D6649; color: white;">Back</a>
+
+    </form>
+
+</div>
+
+<br><br>
+
+{% endblock %}
